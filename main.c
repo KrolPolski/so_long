@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 09:49:55 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:53:30 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, const char **argv)
 	}
 	if (argc > 2)
 	{
-		ft_printf("Too many parameters");
+		ft_printf("Too many parameters\n");
 		return (EXIT_FAILURE);
 	}
 	if (!map_validator(argv[1]))
