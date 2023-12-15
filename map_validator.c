@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 10:15:41 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:39:53 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,30 @@ static int	initial_checks(t_map *map)
 	map->fd = open(map->filename, O_RDONLY);
 	if (map->fd == -1)
 	{
-		ft_printf("Unable to open '%s'\n", map->filename);
+		perror("Unable to open map");
 		return (0);
 	}
 	return (1);
 }
+static int	check_shape(t_map *map)
+{
+	return (1);
+}
+static int	populate_grid(t_map *map)
+{
+	//how much memory to allocate? substrings are taken care of, but how many strings need to be in the array?
+	//we don't know in advance.
+	//maybe this is when we use a linked list? except those will be a pain to iterate through that is why
+	//we wanted to use an array in the first place.
+	map->i = 0;
+	map->grid[0] = get_next_line(map->fd);
+	map->grid[i]
+}
 int	map_validator(t_map *map)
 {
 	if (!initial_checks(map))
+		return(0);
+	if (!check_shape(map))
 		return(0);
 	// check for rectangular shape
 	// Check for exactly 1 exit
