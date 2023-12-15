@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 09:53:30 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:16:46 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, const char **argv)
 {
-	mlx_t *mlx;
-	mlx_image_t *img;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_map		map;
 
 	if (argc <= 1)
 	{
@@ -27,7 +28,8 @@ int	main(int argc, const char **argv)
 		ft_printf("Too many parameters\n");
 		return (EXIT_FAILURE);
 	}
-	if (!map_validator(argv[1]))
+	map.filename = argv[1];
+	if (!map_validator(&map))
 		return (EXIT_FAILURE);
 	mlx = mlx_init(512, 512, "so_long", true);
 	if (!mlx)

@@ -6,40 +6,37 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 10:06:00 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:15:41 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-static int	initial_checks(const char *filename)
+static int	initial_checks(t_map *map)
 {
-	int	name_length;
-	int	fd;
-
-	if (!filename)
+	if (!map->filename)
 	{
 		ft_printf("NULL filename passed to map_validator\n");
 		return (0);
 	}
-	name_length = ft_strlen(filename);
+	map->name_length = ft_strlen(map->filename);
 	// First check for .ber extension
-	if (ft_strncmp(&filename[name_length - 4], ".ber", 4))
+	if (ft_strncmp(&map->filename[map->name_length - 4], ".ber", 4))
 	{
 		ft_printf("Map name does not end in .ber extension\n");	
 		return (0);
 	}
 	// try to open it
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	map->fd = open(map->filename, O_RDONLY);
+	if (map->fd == -1)
 	{
-		ft_printf("Unable to open '%s'\n", filename);
+		ft_printf("Unable to open '%s'\n", map->filename);
 		return (0);
 	}
 	return (1);
 }
-int	map_validator(const char *filename)
+int	map_validator(t_map *map)
 {
-	if (!initial_checks(filename))
+	if (!initial_checks(map))
 		return(0);
 	// check for rectangular shape
 	// Check for exactly 1 exit
