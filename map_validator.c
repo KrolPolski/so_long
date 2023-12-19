@@ -6,11 +6,12 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 12:20:41 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:20:38 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 static int	initial_checks(t_map *map)
 {
 	if (!map->filename)
@@ -122,9 +123,12 @@ int	map_validator(t_map *map)
 	}
 	if (!convert_to_array(map))
 		return (0);
-	map->i = 0;
-	while (map->grid[map->i] != NULL)
-		ft_printf("The grid array '%s'\n", map->grid[map->i++]);
+	//ft_printf("I wanna check the border and make them build the wall");
+	if (!check_borders(map))
+		return (0);
+	//map->i = 0;
+//	while (map->grid[map->i] != NULL)
+//		ft_printf("The grid array '%s'\n", map->grid[map->i++]);
 //	ft_printf("The grid array '%s'\n", map->grid[map->i]);
 	// check for rectangular shape
 	// Check for exactly 1 exit

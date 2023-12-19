@@ -6,12 +6,13 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 12:23:46 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:18:45 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 //TODO: libft doesn't always make the right way, left out bonuses. check on this
+//TODO: We have to trim \n from the array grid or everything breaks
 int	main(int argc, const char **argv)
 {
 	mlx_t		*mlx;
