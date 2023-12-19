@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 10:05:24 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:23:46 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, const char **argv)
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_map		map;
-
+// need to make sure we free the grid arrays and also the linked lists in all possible exit states
 	if (argc <= 1)
 	{
 		ft_printf("Please specify a *.ber file to read: so_long <filename>\n");
@@ -39,6 +39,10 @@ int	main(int argc, const char **argv)
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	map.i = 0;
+	while(map.grid[map.i] != NULL)
+		free(map.grid[map.i++]);
+	free(map.grid);
 
 	return (EXIT_SUCCESS);
 }

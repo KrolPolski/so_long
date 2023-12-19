@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 11:01:21 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:20:41 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,27 @@ int	read_map(t_map *map)
 // add error check for malloc failures and whatnot
 	return (1);
 }
+int	convert_to_array(t_map *map)
+{
+	char *line_array;
+	t_list *curr;
+	
+	map->grid = malloc(sizeof(char *) * (map->line_count + 1));
+	//add malloc protection
+	map->i = 0;
+	curr = map->line_list;
+	while (curr != NULL) //map->i < map->line_count)
+	{
+		line_array = ft_strdup(curr->content);
+		//add null catching
+		map->grid[map->i] = line_array;
+		map->i++;
+		curr = curr->next;
+	}
+	map->grid[map->i] = NULL;
+	ft_lstclear(&map->line_list, free);
+	return (1);
+}
 int	map_validator(t_map *map)
 {
 	if (!initial_checks(map))
@@ -99,6 +120,12 @@ int	map_validator(t_map *map)
 		ft_printf("The map is not rectangular\n");
 		return (0);
 	}
+	if (!convert_to_array(map))
+		return (0);
+	map->i = 0;
+	while (map->grid[map->i] != NULL)
+		ft_printf("The grid array '%s'\n", map->grid[map->i++]);
+//	ft_printf("The grid array '%s'\n", map->grid[map->i]);
 	// check for rectangular shape
 	// Check for exactly 1 exit
 	// Check for at least one collectible
