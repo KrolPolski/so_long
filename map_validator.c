@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 10:39:53 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:14:26 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,53 @@ static int	initial_checks(t_map *map)
 	}
 	return (1);
 }
-static int	check_shape(t_map *map)
+/*static int	check_shape(t_map *map)
 {
 	return (1);
-}
-static int	populate_grid(t_map *map)
+}*/
+/*static int	populate_grid(t_map *map)
 {
 	//how much memory to allocate? substrings are taken care of, but how many strings need to be in the array?
 	//we don't know in advance.
 	//maybe this is when we use a linked list? except those will be a pain to iterate through that is why
 	//we wanted to use an array in the first place.
-	map->i = 0;
-	map->grid[0] = get_next_line(map->fd);
-	map->grid[i]
+//	map->i = 0;
+//	map->grid[0] = get_next_line(map->fd);
+//	map->grid[i]
+}*/
+int	read_map(t_map *map)
+{
+	char *current_line;
+	current_line = get_next_line(map->fd);
+	t_list *current_lst;
+	if (current_line)
+	{
+		(map->line_list) = ft_lstnew(current_line);
+		ft_printf("First line is '%s'\n", map->line_list->content);
+		while (current_line)
+		{
+			current_line = get_next_line(map->fd);
+			if (current_line)
+			{
+				current_lst = ft_lstnew(current_line);
+				ft_lstadd_back(&map->line_list, current_lst);
+				ft_printf("Next line is '%s'\n", current_lst->content);
+			}
+		}
+	}
+	map->i = ft_lstsize(map->line_list);
+ft_printf("there are '%d' nodes in the list", map->i);
+// add error check
+	return (1);
 }
 int	map_validator(t_map *map)
 {
 	if (!initial_checks(map))
-		return(0);
-	if (!check_shape(map))
-		return(0);
+		return (0);
+	if (!read_map(map))
+		return (0);
+	//if (!check_shape(map))
+	//	return (0);
 	// check for rectangular shape
 	// Check for exactly 1 exit
 	// Check for at least one collectible

@@ -6,12 +6,12 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 10:16:46 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:05:24 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+//TODO: libft doesn't always make the right way, left out bonuses. check on this
 int	main(int argc, const char **argv)
 {
 	mlx_t		*mlx;

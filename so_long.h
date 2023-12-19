@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/15 13:31:32 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/19 09:59:42 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 	const char	*filename;
 	char		**grid;
 	int			i;
+	t_list		*line_list;
 }	t_map;
 int	map_validator(t_map *map);
 #endif
