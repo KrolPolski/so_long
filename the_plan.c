@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   the_plan.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:23:32 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/13 14:42:40 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:46:30 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Required functionality:
- * 1) Read map in format *.ber
- * 2) Open window
+ * 1) Read map in format *.ber DONE
+ * 2) Open window DONE
  * 3) draw map on screen
  * 4) Draw sprite
  * 5) Handle movement and apply animation as required
@@ -29,8 +29,8 @@
  * 10) proper map validation to ensure that there is exactly one exit, one
  * 		starting position and at least one collectible. else display error 
  * 		message.
- * 			a) also needs to enforce a rectangular map
- * 			b) must have walls along the edges
+ * 			a) also needs to enforce a rectangular map DONE
+ * 			b) must have walls along the edges DONE
  * 			c) there must be a valid path
  * 	Bonus:
  *
