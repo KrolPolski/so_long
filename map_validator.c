@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 11:46:23 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:15:29 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,25 @@ int	map_validator(t_map *map)
 	if (!check_shape(map))
 	{
 		ft_printf("ERROR: The map is not rectangular\n");
+		ft_lstclear(&map->line_list, free);
 		return (0);
 	}
 	if (!convert_to_array(map))
-		return (0);
+		{
+			free_grid(map);
+			//what about if the first grid malloc fails? what then Ryan?
+			return (0);
+		}
 	//ft_printf("I wanna check the border and make them build the wall");
 	if (!check_borders(map))
 	{
+		free_grid(map);
 		ft_printf("ERROR: The map does not have obstacles across all edges\n");
 		return (0);
 	}
 	if (!count_exits_etc(map))
 	{
+		free_grid(map);
 		return (0);
 	}
 	//map->i = 0;
