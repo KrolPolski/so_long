@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 16:17:15 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:13:35 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	check_borders(t_map *map)
 {
-	ft_printf("Hello advanced validator baby");
+	ft_printf("Hello advanced validator baby\n");
 	map->x = 0;
 	map->y = 0;
 	while (map->grid[0][map->x] != '\0')
 	{
-		ft_printf("We are trying to check the first line");
+		ft_printf("We are trying to check the first line\n");
 		if (map->grid[0][map->x] != '1')
 			return (0);
 		(map->x)++;

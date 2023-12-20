@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 16:20:38 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:13:57 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ static int	check_shape(t_map *map)
 	t_list	*curr;
 
 	curr = map->line_list;
-	while (curr->next != NULL)
+	while (curr != NULL)
 	{
+		ft_printf("My current content: %s\n", curr->content);
 		curr_line_length = ft_strlen(curr->content);
 		if (curr_line_length != map->line_length)
 			return (0);
 		curr = curr->next;
 	}
-	curr_line_length = ft_strlen(curr->content);
-	if (curr_line_length != map->line_length)
-		return (0);
 	return (1);
 }
 /*static int	populate_grid(t_map *map)
@@ -67,6 +65,8 @@ int	read_map(t_map *map)
 {
 	char *current_line;
 	current_line = get_next_line(map->fd);
+	if (current_line[ft_strlen(current_line) - 1] == '\n')
+					current_line[ft_strlen(current_line) - 1] = '\0';
 	t_list *current_lst;
 	if (current_line)
 	{
@@ -77,6 +77,8 @@ int	read_map(t_map *map)
 			current_line = get_next_line(map->fd);
 			if (current_line)
 			{
+				if (current_line[ft_strlen(current_line) - 1] == '\n')
+					current_line[ft_strlen(current_line) - 1] = '\0';
 				current_lst = ft_lstnew(current_line);
 				ft_lstadd_back(&map->line_list, current_lst);
 		//		ft_printf("Next line is '%s'\n", current_lst->content);
