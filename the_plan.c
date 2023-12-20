@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:23:32 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 11:46:30 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:55:06 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  * 		e) for player starting position
  * 10) proper map validation to ensure that there is exactly one exit, one
  * 		starting position and at least one collectible. else display error 
- * 		message.
+ * 		message. DONE
  * 			a) also needs to enforce a rectangular map DONE
  * 			b) must have walls along the edges DONE
  * 			c) there must be a valid path

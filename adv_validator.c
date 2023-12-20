@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 12:39:44 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:56:07 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int	count_exits_etc(t_map *map)
 		{
 			//ft_printf("%c y: %d x: %d\n", map->grid[map->y][map->x], map->y, map->x);
 			if (map->grid[map->y][map->x] == 'P')
+			{
 				(map->starts)++;
+				map->starty = map->y;
+				map->startx = map->x;
+				ft_printf("Starting position is at Y:%d X:%d\n", map->startx, map->starty);
+			}
 			else if (map->grid[map->y][map->x] == 'C')
 				(map->collectibles)++;
 			else if (map->grid[map->y][map->x] == 'E')
@@ -73,6 +78,8 @@ int	check_borders(t_map *map)
 	}
 	return (1);
 }
+
+
 int	check_valid_path(t_map *map)
 {
 	map->grid2 = malloc(sizeof(char *) * map->line_count + 1);
@@ -84,9 +91,11 @@ int	check_valid_path(t_map *map)
 		map->y++;
 	}
 	map->grid2[map->y] = NULL;
-	return (1);
-	//make a copy of the grid by just reading it again
 	//start from starting position
+	// using startx and starty	
+	
+return (1);
+	//make a copy of the grid by just reading it again
 	//mark all possible moves with x
 	//mark current position with *
 	//check for Xs
