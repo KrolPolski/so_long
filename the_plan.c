@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:23:32 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 14:23:28 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:50:44 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
  * 		message. DONE
  * 			a) also needs to enforce a rectangular map DONE
  * 			b) must have walls along the edges DONE
- * 			c) there must be a valid path
- * 			d) there must not be other characters from outside spec
+ * 			c) there must be a valid path DONE
+ * 			d) there must not be other characters from outside spec DONE
  * 	Bonus:
  *
  * 	1) make the player lose if they touch an enemy patrol

@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:37:06 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:50:00 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,7 @@ static int	check_shape(t_map *map)
 	}
 	return (1);
 }
-/*static int	populate_grid(t_map *map)
-{
-	//how much memory to allocate? substrings are taken care of, but how many strings need to be in the array?
-	//we don't know in advance.
-	//maybe this is when we use a linked list? except those will be a pain to iterate through that is why
-	//we wanted to use an array in the first place.
-//	map->i = 0;
-//	map->grid[0] = get_next_line(map->fd);
-//	map->grid[i]
-}*/
+
 int	read_map(t_map *map)
 {
 	char *current_line;
@@ -145,7 +136,6 @@ int	map_validator(t_map *map)
 	if (!check_valid_path(map))
 	{
 		free_grid(map, 1);
-		// need to discard grid2 in event of failed maps
 		return (0);
 	}
 	//map->i = 0;
