@@ -1,5 +1,5 @@
 NAME	:= so_long
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast 
 LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
@@ -24,10 +24,13 @@ $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 Libft/libft.a: 
-	$(MAKE) -C libft/ all bonus
+	$(MAKE) -C libft/ all
+	$(MAKE) -C libft/ bonus
+
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
+	rm -f libft/.bonus;
 
 fclean: clean
 	@rm -rf $(NAME)
