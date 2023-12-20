@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 12:50:56 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:24:54 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_map
 	int			exits;
 	int			starts;
 	int			collectibles;
+	int			curr_col;
 }	t_map;
 int		map_validator(t_map *map);
 int		check_borders(t_map *map);

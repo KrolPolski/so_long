@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 12:56:07 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:42:21 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,53 @@ int	check_borders(t_map *map)
 	}
 	return (1);
 }
-
-
+void	check_square(t_map *map)
+{
+	if (map->grid2[map->y + 1][map->x] == '0')
+		map->grid2[map->y + 1][map->x] = 'X';
+	if (map->grid[map->y + 1][map->x] == 'C')
+		{
+			map->curr_col--;
+			map->grid2[map->y + 1][map->x] = 'X';
+		}
+	if (map->grid2[map->y - 1][map->x] == '0')
+		map->grid2[map->y - 1][map->x] = 'X';
+	if (map->grid[map->y - 1][map->x] == 'C')
+	{
+		map->curr_col--;
+		map->grid2[map->y - 1][map->x] = 'X';
+	}
+	if (map->grid2[map->y][map->x + 1] == '0')
+		map->grid2[map->y][map->x + 1] = 'X';
+	if (map->grid[map->y][map->x + 1] == 'C')
+	{
+		map->curr_col--;
+		map->grid2[map->y][map->x + 1] = 'X';
+	}
+	if (map->grid2[map->y][map->x - 1] == '0') 
+		map->grid2[map->y][map->x - 1] = 'X';
+	if (map->grid[map->y][map->x - 1] == 'C')
+	{
+		map->curr_col--;
+		map->grid2[map->y][map->x - 1] = 'X';
+	}
+	map->grid2[map->y][map->x] = '*';
+}
+void	collect_exit(t_map *map)
+{
+	map->i = 0;
+}
+void	mark_paths(t_map *map)
+{
+	int i; 
+	i = 0;
+	map->curr_col = map->collectibles;
+	check_square(map);
+	// check if there are collectibles left, or if we see the exit
+	collect_exit(map);
+	while (map->grid2[i] != NULL)
+		ft_printf("%s\n", map->grid2[i++]);
+}
 int	check_valid_path(t_map *map)
 {
 	map->grid2 = malloc(sizeof(char *) * map->line_count + 1);
@@ -92,12 +137,15 @@ int	check_valid_path(t_map *map)
 	}
 	map->grid2[map->y] = NULL;
 	//start from starting position
-	// using startx and starty	
-	
+	map->y = map->starty;
+	map->x = map->startx;
+
+		//mark all possible moves with x
+	//mark current position with *
+	mark_paths(map);
 return (1);
 	//make a copy of the grid by just reading it again
-	//mark all possible moves with x
-	//mark current position with *
+
 	//check for Xs
 	//mark current positin with *
 	//mark all possible moves with X
