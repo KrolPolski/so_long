@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 14:49:47 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:13:57 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,28 @@ int	check_borders(t_map *map)
 }
 void	check_square(t_map *map)
 {
-	if (map->grid2[map->y + 1][map->x] == '0')
+	if (map->grid2[map->y + 1][map->x] == '0' || map->grid2[map->y + 1][map->x] == 'E')
 		map->grid2[map->y + 1][map->x] = 'X';
 	if (map->grid[map->y + 1][map->x] == 'C')
 		{
 			map->curr_col--;
 			map->grid2[map->y + 1][map->x] = 'X';
 		}
-	if (map->grid2[map->y - 1][map->x] == '0')
+	if (map->grid2[map->y - 1][map->x] == '0' || map->grid2[map->y - 1][map->x] == 'E')
 		map->grid2[map->y - 1][map->x] = 'X';
 	if (map->grid[map->y - 1][map->x] == 'C')
 	{
 		map->curr_col--;
 		map->grid2[map->y - 1][map->x] = 'X';
 	}
-	if (map->grid2[map->y][map->x + 1] == '0')
+	if (map->grid2[map->y][map->x + 1] == '0' || map->grid2[map->y][map->x + 1] == 'E')
 		map->grid2[map->y][map->x + 1] = 'X';
 	if (map->grid[map->y][map->x + 1] == 'C')
 	{
 		map->curr_col--;
 		map->grid2[map->y][map->x + 1] = 'X';
 	}
-	if (map->grid2[map->y][map->x - 1] == '0') 
+	if (map->grid2[map->y][map->x - 1] == '0' || map->grid2[map->y][map->x - 1] == 'E') 
 		map->grid2[map->y][map->x - 1] = 'X';
 	if (map->grid[map->y][map->x - 1] == 'C')
 	{
@@ -115,11 +115,34 @@ void	check_square(t_map *map)
 	}
 	map->grid2[map->y][map->x] = '*';
 }
+
 int	collect_exit(t_map *map)
 {
 	if (map->curr_col > 0)
 		return (0);
-	 return (1);
+	if (map->grid2[map->exity][map->exitx] == 'E')
+		return (0);
+	return (1);
+}
+void	find_x(t_map *map)
+{
+	map->y = 0;
+	map->x = 0;
+	while (map->grid2[map->y] != NULL)
+	{
+		while (map->grid2[map->y][map->x] != '\0' && map->grid2[map->y][map->x] != 'X')
+		{
+			map->x++;
+		}
+		if (map->grid2[map->y][map->x] == 'X')
+			break ;
+		else
+		{
+			map->x = 0;
+			map->y++;
+		}
+	}
+	ft_printf("current X is at y:%d and x:%d\n", map->y, map->x);
 }
 void	mark_paths(t_map *map)
 {
@@ -128,7 +151,12 @@ void	mark_paths(t_map *map)
 	map->curr_col = map->collectibles;
 	check_square(map);
 	// check if there are collectibles left, or if we see the exit
-	collect_exit(map);
+	//while (!collect_exit(map))
+	{
+		// find next x and then
+		find_x(map);
+	//	check_square(map);
+	}
 	while (map->grid2[i] != NULL)
 		ft_printf("%s\n", map->grid2[i++]);
 }
