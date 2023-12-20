@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 12:15:29 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:40:28 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,11 @@ int	map_validator(t_map *map)
 		return (0);
 	}
 	if (!count_exits_etc(map))
+	{
+		free_grid(map);
+		return (0);
+	}
+	if (!check_valid_path(map))
 	{
 		free_grid(map);
 		return (0);

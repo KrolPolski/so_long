@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 12:03:41 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:39:44 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,27 @@ int	check_borders(t_map *map)
 		map->x++;
 	}
 	return (1);
+}
+int	check_valid_path(t_map *map)
+{
+	map->grid2 = malloc(sizeof(char *) * map->line_count + 1);
+	map->y = 0;
+	while (map->grid[map->y] != NULL)
+	{
+		map->grid2[map->y] = ft_strdup(map->grid[map->y]);
+		ft_printf("New grid: %s\n", map->grid2[map->y]);
+		map->y++;
+	}
+	map->grid2[map->y] = NULL;
+	return (1);
+	//make a copy of the grid by just reading it again
+	//start from starting position
+	//mark all possible moves with x
+	//mark current position with *
+	//check for Xs
+	//mark current positin with *
+	//mark all possible moves with X
+	//loop until we see an E or we run out
+	//discard grid copy
+	//free both grids if we find an error
 }
