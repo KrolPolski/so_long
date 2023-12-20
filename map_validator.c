@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 11:13:57 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:41:25 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ static int	initial_checks(t_map *map)
 {
 	if (!map->filename)
 	{
-		ft_printf("NULL filename passed to map_validator\n");
+		ft_printf("ERROR: NULL filename passed to map_validator\n");
 		return (0);
 	}
 	map->name_length = ft_strlen(map->filename);
 	// First check for .ber extension
 	if (ft_strncmp(&map->filename[map->name_length - 4], ".ber", 4))
 	{
-		ft_printf("Map name does not end in .ber extension\n");	
+		ft_printf("ERROR: Map name does not end in .ber extension\n");	
 		return (0);
 	}
 	// try to open it
 	map->fd = open(map->filename, O_RDONLY);
 	if (map->fd == -1)
 	{
-		perror("Unable to open map");
+		perror("ERROR: Unable to open map");
 		return (0);
 	}
 	return (1);
@@ -43,7 +43,7 @@ static int	check_shape(t_map *map)
 	curr = map->line_list;
 	while (curr != NULL)
 	{
-		ft_printf("My current content: %s\n", curr->content);
+		//ft_printf("My current content: %s\n", curr->content);
 		curr_line_length = ft_strlen(curr->content);
 		if (curr_line_length != map->line_length)
 			return (0);
@@ -120,14 +120,17 @@ int	map_validator(t_map *map)
 		return (0);
 	if (!check_shape(map))
 	{
-		ft_printf("The map is not rectangular\n");
+		ft_printf("ERROR: The map is not rectangular\n");
 		return (0);
 	}
 	if (!convert_to_array(map))
 		return (0);
 	//ft_printf("I wanna check the border and make them build the wall");
 	if (!check_borders(map))
+	{
+		ft_printf("ERROR: The map does not have obstacles across all edges\n");
 		return (0);
+	}
 	//map->i = 0;
 //	while (map->grid[map->i] != NULL)
 //		ft_printf("The grid array '%s'\n", map->grid[map->i++]);
