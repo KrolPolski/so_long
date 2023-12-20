@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 14:24:54 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:45:34 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_map
 	int			y;
 	int			startx;
 	int			starty;
+	int			exitx;
+	int			exity;
 	t_list		*line_list;
 	int			line_count;
 	int			line_length;

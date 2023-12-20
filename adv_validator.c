@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 14:42:21 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:49:47 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ int	count_exits_etc(t_map *map)
 			else if (map->grid[map->y][map->x] == 'C')
 				(map->collectibles)++;
 			else if (map->grid[map->y][map->x] == 'E')
+			{
 				(map->exits)++;
+				map->exitx = map->x;
+				map->exity = map->y;
+				ft_printf("exit position is at Y:%d X:%d\n", map->exitx, map->exity);
+			}
 			map->x++;
 		}
 		map->x = 0;
@@ -110,9 +115,11 @@ void	check_square(t_map *map)
 	}
 	map->grid2[map->y][map->x] = '*';
 }
-void	collect_exit(t_map *map)
+int	collect_exit(t_map *map)
 {
-	map->i = 0;
+	if (map->curr_col > 0)
+		return (0);
+	 return (1);
 }
 void	mark_paths(t_map *map)
 {
