@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:39:59 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:47:57 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ int	count_exits_etc(t_map *map)
 				map->exity = map->y;
 				ft_printf("exit position is at Y:%d X:%d\n", map->exitx, map->exity);
 			}
+			else if (!ft_strchr("10CEP", map->grid[map->y][map->x]))
+				{
+					ft_printf("ERROR: Invalid character detected in map\n");
+					return (0);
+				}
 			map->x++;
 		}
 		map->x = 0;
