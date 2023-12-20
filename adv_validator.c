@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:13:57 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:39:59 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	collect_exit(t_map *map)
 		return (0);
 	return (1);
 }
-void	find_x(t_map *map)
+int	find_x(t_map *map)
 {
 	map->y = 0;
 	map->x = 0;
@@ -135,30 +135,39 @@ void	find_x(t_map *map)
 			map->x++;
 		}
 		if (map->grid2[map->y][map->x] == 'X')
-			break ;
+		{
+			ft_printf("current X is at y:%d and x:%d\n", map->y, map->x);
+			return (1);
+		}	
 		else
 		{
 			map->x = 0;
 			map->y++;
 		}
 	}
-	ft_printf("current X is at y:%d and x:%d\n", map->y, map->x);
+	return (0);
 }
-void	mark_paths(t_map *map)
+int	mark_paths(t_map *map)
 {
 	int i; 
 	i = 0;
 	map->curr_col = map->collectibles;
 	check_square(map);
 	// check if there are collectibles left, or if we see the exit
-	//while (!collect_exit(map))
+	while (!collect_exit(map)) // need to be able to break this loop for invalid paths
 	{
 		// find next x and then
-		find_x(map);
-	//	check_square(map);
+		if (!find_x(map))
+		{	
+			while (map->grid2[i] != NULL)
+			ft_printf("%s\n", map->grid2[i++]);
+			return (0);
+		}
+		check_square(map);
 	}
 	while (map->grid2[i] != NULL)
 		ft_printf("%s\n", map->grid2[i++]);
+	return (1);
 }
 int	check_valid_path(t_map *map)
 {
@@ -177,7 +186,17 @@ int	check_valid_path(t_map *map)
 
 		//mark all possible moves with x
 	//mark current position with *
-	mark_paths(map);
+	if (!mark_paths(map))
+	{
+		free_grid(map, 2);
+		ft_printf("ERROR: No valid path detected\n");
+		return (0);
+	}
+	free_grid(map, 2);
+ft_printf("We passed valid path test\n");
+map->y = 0;
+while (map->grid[map->y] != NULL)
+	ft_printf("%s\n", map->grid[map->y++]);
 return (1);
 	//make a copy of the grid by just reading it again
 

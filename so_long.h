@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 14:45:34 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:36:01 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ typedef struct s_map
 int		map_validator(t_map *map);
 int		check_borders(t_map *map);
 int		count_exits_etc(t_map *map);
-void	free_grid(t_map *map);
+void	free_grid(t_map *map, int flag);
 int		check_valid_path(t_map *map);
 #endif
