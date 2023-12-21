@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 14:11:20 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:01:42 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	determine_tile_size(t_map *map)
 	map->charx = map->startx;
 	map->chary = map->starty;
 	map->moves = 0;
+	map->curr_col = 0;
 }
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 {
@@ -41,6 +42,7 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	p->txt_p = mlx_load_png("./assets/tiles/floor/floor_2.png");
 	p->txt_k = mlx_load_png("./assets/heroes/knight/knight_idle_anim_f0.png");
 	p->txt_m = mlx_load_png("./assets/minotaur.png");
+	p->txt_cc = mlx_load_png("./assets/props_itens/chest_open.png");
 	p->img_k = mlx_texture_to_image(mlx, p->txt_k);
 	p->img_0 = mlx_texture_to_image(mlx, p->txt_0);
 	p->img_1 = mlx_texture_to_image(mlx, p->txt_1);
@@ -48,10 +50,12 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	p->img_e = mlx_texture_to_image(mlx, p->txt_e);
 	p->img_p = mlx_texture_to_image(mlx, p->txt_p);
 	p->img_m = mlx_texture_to_image(mlx, p->txt_m);
+	p->img_cc = mlx_texture_to_image(mlx, p->txt_cc);
 	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_0, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_1, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_c, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_cc, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_e, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_p, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_m, map->tile_sq, map->tile_sq);

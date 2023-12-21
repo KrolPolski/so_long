@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 13:36:12 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:54:37 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_img
 	mlx_texture_t	*txt_0;
 	mlx_texture_t	*txt_1;
 	mlx_texture_t	*txt_c;
+	mlx_texture_t	*txt_cc;
 	mlx_texture_t	*txt_e;
 	mlx_texture_t	*txt_p;
 	mlx_texture_t	*txt_m;
@@ -34,6 +35,7 @@ typedef struct s_img
 	mlx_image_t		*img_0;
 	mlx_image_t		*img_1;
 	mlx_image_t		*img_c;
+	mlx_image_t		*img_cc;
 	mlx_image_t		*img_e;
 	mlx_image_t		*img_p;
 	mlx_image_t		*img_m;
@@ -68,6 +70,7 @@ typedef struct s_map
 	int			chary;
 	int			moves;
 	t_img		*img;
+	mlx_t		*mlx;
 }	t_map;
 int		map_validator(t_map *map);
 int		check_borders(t_map *map);

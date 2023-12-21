@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 13:33:16 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:53:05 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, const char **argv)
 	if (!map_validator(&map))
 		return (EXIT_FAILURE);
 	mlx = mlx_init(1366, 768, "so_long", true);
+	map.mlx = mlx;
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	draw_map(mlx, &map, &p);
