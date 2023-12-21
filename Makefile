@@ -9,7 +9,9 @@ SRCS	:= main.c \
 		   map_validator.c \
 		   adv_validator.c \
 		   tools.c \
-		   draw_map.c
+		   draw_map.c \
+		   hook_mgmt.c \
+		   movement.c
 
 OBJS	:= ${SRCS:.c=.o} Libft/libft.a
 

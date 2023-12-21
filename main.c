@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 10:47:25 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:33:16 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, const char **argv)
 	mlx_t		*mlx;
 	t_map		map;
 	t_img		p;
+	
+	map.img = &p;
 // need to make sure we free the grid arrays and also the linked lists in all possible exit states
 	if (argc <= 1)
 	{
@@ -36,6 +38,7 @@ int	main(int argc, const char **argv)
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	draw_map(mlx, &map, &p);
+	mlx_key_hook(mlx, my_keyhook, &map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	map.i = 0;

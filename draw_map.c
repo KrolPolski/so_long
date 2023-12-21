@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 11:39:09 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:54:43 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	determine_tile_size(t_map *map)
 	else
 		map->tile_sq = map->tile_width;
 	ft_printf("Tile size should be %dx%d, but square is %d\n", map->tile_length, map->tile_width, map->tile_sq);
+	map->charx = map->startx;
+	map->chary = map->starty;
 }
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 {
@@ -68,13 +70,13 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 			else if (map->grid[map->y][map->x] == 'P')
 			{
 				mlx_image_to_window(mlx, p->img_p, map->x * map->tile_sq, map->y * map->tile_sq);
-				mlx_image_to_window(mlx, p->img_m, map->x * map->tile_sq, map->y * map->tile_sq);
 			}
 			map->x++;
 		}
 		map->y++;
 		map->x = 0;
 	}
+	mlx_image_to_window(mlx, p->img_m, map->charx * map->tile_sq, map->chary * map->tile_sq);
 //	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
 //	mlx_image_to_window(mlx, p->img_k, 150, 150);
 //	mlx_image_to_window(mlx, p->img_k, 800, 500);
