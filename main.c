@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/19 16:18:45 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:12:05 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	main(int argc, const char **argv)
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_map		map;
+	mlx_texture_t *knight;
+	mlx_image_t *img_k;
+
+	
 // need to make sure we free the grid arrays and also the linked lists in all possible exit states
 	if (argc <= 1)
 	{
@@ -32,12 +36,16 @@ int	main(int argc, const char **argv)
 	map.filename = argv[1];
 	if (!map_validator(&map))
 		return (EXIT_FAILURE);
-	mlx = mlx_init(512, 512, "so_long", true);
+	mlx = mlx_init(1366, 768, "so_long", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
-	img = mlx_new_image(mlx, 512, 512);
-	ft_memset(img->pixels, 255, img->width * img-> height * BPP);
+	img = mlx_new_image(mlx, 1366, 768);
+	ft_memset(img->pixels, 255, img->width * img->height * BPP);
 	mlx_image_to_window(mlx, img, 0, 0);
+	knight = mlx_load_png("./assets/heroes/knight/knight_idle_anim_f0.png");
+	img_k = mlx_texture_to_image(mlx, knight);
+	mlx_resize_image(img_k, 200, 200);
+	mlx_image_to_window(mlx, img_k, 150, 150);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	map.i = 0;
