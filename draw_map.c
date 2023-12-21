@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 11:19:37 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:39:09 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,21 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	p->txt_e = mlx_load_png("./assets/tiles/wall/door_closed.png");
 	p->txt_p = mlx_load_png("./assets/tiles/floor/floor_2.png");
 	p->txt_k = mlx_load_png("./assets/heroes/knight/knight_idle_anim_f0.png");
+	p->txt_m = mlx_load_png("./assets/minotaur.png");
 	p->img_k = mlx_texture_to_image(mlx, p->txt_k);
 	p->img_0 = mlx_texture_to_image(mlx, p->txt_0);
 	p->img_1 = mlx_texture_to_image(mlx, p->txt_1);
 	p->img_c = mlx_texture_to_image(mlx, p->txt_c);
 	p->img_e = mlx_texture_to_image(mlx, p->txt_e);
 	p->img_p = mlx_texture_to_image(mlx, p->txt_p);
+	p->img_m = mlx_texture_to_image(mlx, p->txt_m);
 	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_0, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_1, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_c, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_e, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_p, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_m, map->tile_sq, map->tile_sq);
 	ft_printf("We are about to draw the map\n");
 	while (map->grid[map->y] != NULL)
 	{
@@ -63,14 +66,17 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 			else if (map->grid[map->y][map->x] == 'E')
 				mlx_image_to_window(mlx, p->img_e, map->x * map->tile_sq, map->y * map->tile_sq);
 			else if (map->grid[map->y][map->x] == 'P')
+			{
 				mlx_image_to_window(mlx, p->img_p, map->x * map->tile_sq, map->y * map->tile_sq);
+				mlx_image_to_window(mlx, p->img_m, map->x * map->tile_sq, map->y * map->tile_sq);
+			}
 			map->x++;
 		}
 		map->y++;
 		map->x = 0;
 	}
-	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
-	mlx_image_to_window(mlx, p->img_k, 150, 150);
-	mlx_image_to_window(mlx, p->img_k, 800, 500);
-	ft_printf("%s", map->grid[0]);
+//	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
+//	mlx_image_to_window(mlx, p->img_k, 150, 150);
+//	mlx_image_to_window(mlx, p->img_k, 800, 500);
+//	ft_printf("%s", map->grid[0]);
 }
