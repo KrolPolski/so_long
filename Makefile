@@ -8,7 +8,8 @@ LIBS    := $(LIBMLX)/build/libmlx42.a -ldl -pthread -lm -L/Users/rboudwin/.brew/
 SRCS	:= main.c \
 		   map_validator.c \
 		   adv_validator.c \
-		   tools.c
+		   tools.c \
+		   draw_map.c
 
 OBJS	:= ${SRCS:.c=.o} Libft/libft.a
 

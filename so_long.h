@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:36:01 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:48:53 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,27 @@ typedef struct s_map
 	int			collectibles;
 	int			curr_col;
 }	t_map;
+typedef struct s_img
+{
+	mlx_texture_t	*txt_k;
+	mlx_texture_t	*txt_0;
+	mlx_texture_t	*txt_1;
+	mlx_texture_t	*txt_c;
+	mlx_texture_t	*txt_e;
+	mlx_texture_t	*txt_p;
+	mlx_image_t		*img_k;
+	mlx_image_t		*img;
+	mlx_image_t		*img_0;
+	mlx_image_t		*img_1;
+	mlx_image_t		*img_c;
+	mlx_image_t		*img_e;
+	mlx_image_t		*img_p;
+}	t_img;
+
 int		map_validator(t_map *map);
 int		check_borders(t_map *map);
 int		count_exits_etc(t_map *map);
 void	free_grid(t_map *map, int flag);
 int		check_valid_path(t_map *map);
+void	draw_map(mlx_t *mlx, t_map *map, t_img *p);
 #endif
