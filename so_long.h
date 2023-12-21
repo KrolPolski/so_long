@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 14:54:37 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:05:36 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_img
 	mlx_texture_t	*txt_c;
 	mlx_texture_t	*txt_cc;
 	mlx_texture_t	*txt_e;
+	mlx_texture_t	*txt_eo;
 	mlx_texture_t	*txt_p;
 	mlx_texture_t	*txt_m;
 	mlx_image_t		*img_k;
@@ -37,6 +38,7 @@ typedef struct s_img
 	mlx_image_t		*img_c;
 	mlx_image_t		*img_cc;
 	mlx_image_t		*img_e;
+	mlx_image_t		*img_eo;
 	mlx_image_t		*img_p;
 	mlx_image_t		*img_m;
 }	t_img;

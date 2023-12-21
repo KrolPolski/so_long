@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:17:00 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 16:01:59 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:14:40 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@ void	collect_chest(t_map *map, t_img *img, mlx_t *mlx)
 	mlx_image_to_window(mlx, img->img_cc, map->charx * map->tile_sq, map->chary * map->tile_sq);
 	map->grid[map->chary][map->charx] = '0';
 	printf("Depth before was %d\n and depth of first chest is %d\n", img->img_m->instances[0].z, img->img_cc->instances[0].z);
+	if (map->curr_col == map->collectibles)
+		{
+			map->grid[map->exity][map->exitx] = 'e';
+			mlx_delete_image(mlx, img->img_e);
+			mlx_image_to_window(mlx, img->img_eo, map->exitx * map->tile_sq, map->exity * map->tile_sq);
+		}
 	mlx_delete_image(mlx, img->img_m);
 	img->img_m = mlx_texture_to_image(mlx, img->txt_m);
 	mlx_resize_image(img->img_m, map->tile_sq, map->tile_sq);
 	mlx_image_to_window(mlx, img->img_m, map->charx * map->tile_sq, map->chary * map->tile_sq);
+	
 }
 void	move_player(t_map *map, t_img *img, char c)
 {
@@ -39,44 +46,52 @@ void	move_player(t_map *map, t_img *img, char c)
 			map->charx--;
 			if(map->grid[map->chary][map->charx] == 'C')
 				collect_chest(map, img, map->mlx);
+			if(map->grid[map->chary][map->charx] == 'e')
+				ft_printf("You win!\n");	
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
 	}
 	if (c == 'R')
 	{
-		ft_printf("We detected intention to move right\n");
+		//ft_printf("We detected intention to move right\n");
 		if (map->grid[map->chary][map->charx + 1] != '1')
 		{
 		img->img_m->instances[0].x += map->tile_sq;
 		map->charx++;
 		if(map->grid[map->chary][map->charx] == 'C')
-				collect_chest(map, img, map->mlx);
+			collect_chest(map, img, map->mlx);
+		if(map->grid[map->chary][map->charx] == 'e')
+			ft_printf("You win!\n");	
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
 	}
 	if (c == 'U')
 	{
-		ft_printf("We detected intention to move up\n");
+		//ft_printf("We detected intention to move up\n");
 		if (map->grid[map->chary - 1][map->charx] != '1')
 		{img->img_m->instances[0].y -= map->tile_sq;
 		map->chary--;
 		if(map->grid[map->chary][map->charx] == 'C')
 				collect_chest(map, img, map->mlx);
+		if(map->grid[map->chary][map->charx] == 'e')
+				ft_printf("You win!\n");	
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
 	}
 	if (c == 'D')
 	{
-		ft_printf("We detected intention to move down\n");
+		//ft_printf("We detected intention to move down\n");
 		if (map->grid[map->chary + 1][map->charx] != '1')
 		{
 			img->img_m->instances[0].y += map->tile_sq;
 			map->chary++;
 			if(map->grid[map->chary][map->charx] == 'C')
 				collect_chest(map, img, map->mlx);
+			if(map->grid[map->chary][map->charx] == 'e')
+				ft_printf("You win!\n");	
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
