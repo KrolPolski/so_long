@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 10:48:53 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:05:41 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct s_map
 	int			starts;
 	int			collectibles;
 	int			curr_col;
+	int			tile_width;
+	int			tile_length;
+	int			tile_sq;
 }	t_map;
 typedef struct s_img
 {
