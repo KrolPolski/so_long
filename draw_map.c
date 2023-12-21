@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 11:08:28 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:19:37 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	map->y = 0;
 	determine_tile_size(map);
 	
-	p->img = mlx_new_image(mlx, 1366, 768);
-	ft_memset(p->img->pixels, 255, p->img->width * p->img->height * BPP);
-	mlx_image_to_window(mlx, p->img, 0, 0);
+	//p->img = mlx_new_image(mlx, 1366, 768);
+	//ft_memset(p->img->pixels, 255, p->img->width * p->img->height * BPP);
+	//mlx_image_to_window(mlx, p->img, 0, 0);
 	p->txt_0 = mlx_load_png("./assets/tiles/floor/floor_1.png");
 	p->txt_1 = mlx_load_png("./assets/tiles/wall/wall_1.png");
 	p->txt_c = mlx_load_png("./assets/props_itens/chest_closed_anim_f0.png");
@@ -43,15 +43,32 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	p->img_c = mlx_texture_to_image(mlx, p->txt_c);
 	p->img_e = mlx_texture_to_image(mlx, p->txt_e);
 	p->img_p = mlx_texture_to_image(mlx, p->txt_p);
-	//mlx_resize_image
-
-	/*while (map->grid[map->y] != NULL)
+	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_0, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_1, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_c, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_e, map->tile_sq, map->tile_sq);
+	mlx_resize_image(p->img_p, map->tile_sq, map->tile_sq);
+	ft_printf("We are about to draw the map\n");
+	while (map->grid[map->y] != NULL)
 	{
-		while (map->grid[map->x] != '\0')
+		while (map->grid[map->y][map->x] != '\0')
 		{
-
+			if (map->grid[map->y][map->x] == '0')
+				mlx_image_to_window(mlx, p->img_0, map->x * map->tile_sq, map->y * map->tile_sq);
+			else if (map->grid[map->y][map->x] == '1')
+				mlx_image_to_window(mlx, p->img_1, map->x * map->tile_sq, map->y * map->tile_sq);
+			else if (map->grid[map->y][map->x] == 'C')
+				mlx_image_to_window(mlx, p->img_c, map->x * map->tile_sq, map->y * map->tile_sq);
+			else if (map->grid[map->y][map->x] == 'E')
+				mlx_image_to_window(mlx, p->img_e, map->x * map->tile_sq, map->y * map->tile_sq);
+			else if (map->grid[map->y][map->x] == 'P')
+				mlx_image_to_window(mlx, p->img_p, map->x * map->tile_sq, map->y * map->tile_sq);
+			map->x++;
 		}
-	}*/
+		map->y++;
+		map->x = 0;
+	}
 	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
 	mlx_image_to_window(mlx, p->img_k, 150, 150);
 	mlx_image_to_window(mlx, p->img_k, 800, 500);

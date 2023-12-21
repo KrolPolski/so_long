@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:47:57 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:31:07 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	check_square(t_map *map)
 	}
 	if (map->grid2[map->y][map->x - 1] == '0' || map->grid2[map->y][map->x - 1] == 'E') 
 		map->grid2[map->y][map->x - 1] = 'X';
-	if (map->grid[map->y][map->x - 1] == 'C')
+	if (map->grid2[map->y][map->x - 1] == 'C')
 	{
 		map->curr_col--;
 		map->grid2[map->y][map->x - 1] = 'X';
