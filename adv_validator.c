@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:08:17 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:13:21 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ void	define_start(t_map *map)
 	map->starty = map->y;
 	map->startx = map->x;
 }
-int	report_map_count_error(t_map *map)
+
+int	report_invalid_char(void)
 {
-	ft_printf("ERROR: Invalid map- starts: %d exits: %d collectibles: %d\n",
-	map->starts, map->exits, map->collectibles);
-	ft_printf("You must have exactly one start, one exit");
-	ft_printf(" and at least one collectible\n");
+	ft_printf("ERROR: Invalid character detected in map\n");
 	return (0);
 }
 int	count_exits_etc(t_map *map)
@@ -53,10 +51,7 @@ int	count_exits_etc(t_map *map)
 				map->exity = map->y;
 			}
 			else if (!ft_strchr("10CEP", map->grid[map->y][map->x]))
-			{
-				ft_printf("ERROR: Invalid character detected in map\n");
-				return (0);
-			}
+				return (report_invalid_char());
 			map->x++;
 		}
 		map->x = 0;
