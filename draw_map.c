@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:21:20 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:38:53 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	determine_tile_size(t_map *map)
 	map->moves = 0;
 	map->curr_col = 0;
 }
+
 void	load_textures(mlx_t *mlx, t_img *p)
 {
 	p->txt_0 = mlx_load_png("./assets/tiles/floor/floor_1.png");
@@ -50,6 +51,7 @@ void	load_textures(mlx_t *mlx, t_img *p)
 	p->img_eo = mlx_texture_to_image(mlx, p->txt_eo);
 	//p->img_win = mlx_texture_to_image(mlx, p->txt_win);
 }
+
 void	initialize_images(mlx_t *mlx, t_map *map, t_img *p)
 {
 	map->x = 0;
@@ -95,6 +97,7 @@ void	draw_row(mlx_t *mlx, t_map *map, t_img *p)
 		map->x++;
 	}
 }
+
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 {
 	initialize_images(mlx, map, p);

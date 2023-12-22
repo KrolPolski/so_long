@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:14:58 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:52:27 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ int	count_exits_etc(t_map *map)
 		return (report_map_count_error(map));
 	return (1);
 }
-
+int	report_bad_border(void)
+{
+	ft_printf("ERROR: The map does not have obstacles across all edges\n");
+	return (0);
+}
 int	check_borders(t_map *map)
 {
 	map->x = 0;
@@ -70,7 +74,7 @@ int	check_borders(t_map *map)
 	while (map->grid[0][map->x] != '\0')
 	{
 		if (map->grid[0][map->x] != '1')
-			return (0);
+			return (report_bad_border());
 		(map->x)++;
 	}
 	map->y++;
@@ -79,13 +83,13 @@ int	check_borders(t_map *map)
 	{
 		if (map->grid[map->y][0] != '1'
 			|| map->grid[map->y][map->line_length - 1] != '1')
-			return (0);
+			return (report_bad_border());
 		map->y++;
 	}
 	while (map->grid[map->line_count - 1][map->x] != '\0')
 	{
 		if (map->grid[map->line_count - 1][map->x] != '1')
-			return (0);
+			return (report_bad_border());
 		map->x++;
 	}
 	return (1);
