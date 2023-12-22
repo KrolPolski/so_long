@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:23:32 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 09:00:03 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:57:32 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@
  * 		a) find sprites for enemies
  * 		b) create patrol pathing
  * 	2) add some sprite animation
- * 	3) display the movement count directly on screen, not just on the shell*/
+ * 	3) display the movement count directly on screen,
+ *  not just on the shell*/

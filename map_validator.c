@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 09:45:12 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:55:08 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	read_map(t_map *map)
 // add error check for malloc failures and whatnot
 	return (1);
 }
+
 int	convert_to_array(t_map *map)
 {
 	char	*line_array;
@@ -99,6 +100,7 @@ int	convert_to_array(t_map *map)
 	ft_lstclear(&map->line_list, free);
 	return (1);
 }
+
 int	map_validator(t_map *map)
 {
 	if (!initial_checks(map))
@@ -112,11 +114,11 @@ int	map_validator(t_map *map)
 		return (0);
 	}
 	if (!convert_to_array(map))
-		{
-			free_grid(map, 1);
-			//what about if the first grid malloc fails? what then Ryan?
-			return (0);
-		}
+	{
+		free_grid(map, 1);
+		//what about if the first grid malloc fails? what then Ryan?
+		return (0);
+	}
 	if (!check_borders(map))
 	{
 		free_grid(map, 1);
