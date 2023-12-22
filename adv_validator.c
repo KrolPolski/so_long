@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:13:21 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:14:58 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	report_invalid_char(void)
 	ft_printf("ERROR: Invalid character detected in map\n");
 	return (0);
 }
+
 int	count_exits_etc(t_map *map)
 {
 	initialize_map_counters(map);
