@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:52:27 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:09:25 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ int	count_exits_etc(t_map *map)
 		return (report_map_count_error(map));
 	return (1);
 }
-int	report_bad_border(void)
-{
-	ft_printf("ERROR: The map does not have obstacles across all edges\n");
-	return (0);
-}
+
 int	check_borders(t_map *map)
 {
 	map->x = 0;

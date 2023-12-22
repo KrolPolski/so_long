@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:10:56 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:17:44 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ int		find_x(t_map *map);
 int		mark_paths(t_map *map);
 int		check_valid_path(t_map *map);
 int		report_map_count_error(t_map *map);
+int		report_bad_border(void);
+void	collect_chest(t_map *map, t_img *img, mlx_t *mlx);
 #endif

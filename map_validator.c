@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:53:13 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:10:53 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ int	map_validator(t_map *map)
 		ft_lstclear(&map->line_list, free);
 		return (0);
 	}
-	if (!convert_to_array(map) || !check_borders(map) || !count_exits_etc(map)  || !check_valid_path(map)) 
-	{		//what about if the first grid malloc fails? what then Ryan?
+	if (!convert_to_array(map) || !check_borders(map)
+		|| !count_exits_etc(map) || !check_valid_path(map))
+	{
+		//what about if the first grid malloc fails? what then Ryan?
 		free_grid(map, 1);
 		return (0);
 	}

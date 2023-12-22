@@ -6,39 +6,15 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:17:00 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 09:57:06 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:23:29 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	collect_chest(t_map *map, t_img *img, mlx_t *mlx)
+void	move_left(t_map *map, t_img *img)
 {
-	ft_printf("Before collection we have %d \n", map->curr_col);
-	map->curr_col++;
-	ft_printf("You now have %d/%d chests\n", map->curr_col, map->collectibles);
-	mlx_image_to_window(mlx, img->img_cc,
-		map->charx * map->tile_sq, map->chary * map->tile_sq);
-	map->grid[map->chary][map->charx] = '0';
-	if (map->curr_col == map->collectibles)
-	{
-		map->grid[map->exity][map->exitx] = 'e';
-		mlx_delete_image(mlx, img->img_e);
-		mlx_image_to_window(mlx, img->img_eo,
-			map->exitx * map->tile_sq, map->exity * map->tile_sq);
-	}
-	mlx_delete_image(mlx, img->img_m);
-	img->img_m = mlx_texture_to_image(mlx, img->txt_m);
-	mlx_resize_image(img->img_m, map->tile_sq, map->tile_sq);
-	mlx_image_to_window(mlx, img->img_m,
-		map->charx * map->tile_sq, map->chary * map->tile_sq);
-}
-
-void	move_player(t_map *map, t_img *img, char c)
-{
-	if (c == 'L')
-	{
-		if (map->grid[map->chary][map->charx - 1] != '1')
+	if (map->grid[map->chary][map->charx - 1] != '1')
 		{
 			img->img_m->instances[0].x -= map->tile_sq;
 			map->charx--;
@@ -54,10 +30,10 @@ void	move_player(t_map *map, t_img *img, char c)
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
-	}
-	if (c == 'R')
-	{
-		if (map->grid[map->chary][map->charx + 1] != '1')
+}
+void	move_right(t_map *map, t_img *img)
+{
+	if (map->grid[map->chary][map->charx + 1] != '1')
 		{
 			img->img_m->instances[0].x += map->tile_sq;
 			map->charx++;
@@ -68,10 +44,10 @@ void	move_player(t_map *map, t_img *img, char c)
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
-	}
-	if (c == 'U')
-	{
-		if (map->grid[map->chary - 1][map->charx] != '1')
+}
+void	move_up(t_map *map, t_img *img)
+{
+	if (map->grid[map->chary - 1][map->charx] != '1')
 		{
 			img->img_m->instances[0].y -= map->tile_sq;
 			map->chary--;
@@ -82,10 +58,10 @@ void	move_player(t_map *map, t_img *img, char c)
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
-	}
-	if (c == 'D')
-	{
-		if (map->grid[map->chary + 1][map->charx] != '1')
+}
+void	move_down(t_map *map, t_img *img)
+{
+if (map->grid[map->chary + 1][map->charx] != '1')
 		{
 			img->img_m->instances[0].y += map->tile_sq;
 			map->chary++;
@@ -96,5 +72,16 @@ void	move_player(t_map *map, t_img *img, char c)
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
-	}
+}
+
+void	move_player(t_map *map, t_img *img, char c)
+{
+	if (c == 'L')
+		move_left(map, img);
+	if (c == 'R')
+		move_right(map, img);
+	if (c == 'U')
+		move_up(map, img);
+	if (c == 'D')
+		move_down(map, img);
 }
