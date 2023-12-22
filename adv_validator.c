@@ -6,19 +6,24 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 10:35:20 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 10:50:25 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_exits_etc(t_map *map)
+void	initialize_map_counters(t_map *map)
 {
 	map->x = 0;
 	map->y = 0;
 	map->starts = 0;
 	map->exits = 0;
 	map->collectibles = 0;
+}
+
+int	count_exits_etc(t_map *map)
+{
+	initialize_map_counters(map);
 	while (map->grid[map->y] != NULL)
 	{
 		while (map->grid[map->y][map->x] != '\0')
