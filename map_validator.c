@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/20 15:50:00 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:45:12 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ static int	initial_checks(t_map *map)
 		return (0);
 	}
 	map->name_length = ft_strlen(map->filename);
-	// First check for .ber extension
 	if (ft_strncmp(&map->filename[map->name_length - 4], ".ber", 4))
 	{
-		ft_printf("ERROR: Map name does not end in .ber extension\n");	
+		ft_printf("ERROR: Map name does not end in .ber extension\n");
 		return (0);
 	}
-	// try to open it
 	map->fd = open(map->filename, O_RDONLY);
 	if (map->fd == -1)
 	{
@@ -35,6 +33,7 @@ static int	initial_checks(t_map *map)
 	}
 	return (1);
 }
+
 static int	check_shape(t_map *map)
 {
 	int		curr_line_length;
@@ -43,7 +42,6 @@ static int	check_shape(t_map *map)
 	curr = map->line_list;
 	while (curr != NULL)
 	{
-		//ft_printf("My current content: %s\n", curr->content);
 		curr_line_length = ft_strlen(curr->content);
 		if (curr_line_length != map->line_length)
 			return (0);
@@ -54,15 +52,15 @@ static int	check_shape(t_map *map)
 
 int	read_map(t_map *map)
 {
-	char *current_line;
+	char	*current_line;
+	t_list	*current_lst;
+
 	current_line = get_next_line(map->fd);
 	if (current_line[ft_strlen(current_line) - 1] == '\n')
-					current_line[ft_strlen(current_line) - 1] = '\0';
-	t_list *current_lst;
+		current_line[ft_strlen(current_line) - 1] = '\0';
 	if (current_line)
 	{
 		(map->line_list) = ft_lstnew(current_line);
-		//ft_printf("First line is '%s'\n", map->line_list->content);
 		while (current_line)
 		{
 			current_line = get_next_line(map->fd);
@@ -72,26 +70,24 @@ int	read_map(t_map *map)
 					current_line[ft_strlen(current_line) - 1] = '\0';
 				current_lst = ft_lstnew(current_line);
 				ft_lstadd_back(&map->line_list, current_lst);
-		//		ft_printf("Next line is '%s'\n", current_lst->content);
 			}
 		}
 	}
 	map->line_count = ft_lstsize(map->line_list);
 	map->line_length = ft_strlen(map->line_list->content);
-//ft_printf("there are '%d' nodes in the list", map->line_count);
 // add error check for malloc failures and whatnot
 	return (1);
 }
 int	convert_to_array(t_map *map)
 {
-	char *line_array;
-	t_list *curr;
-	
+	char	*line_array;
+	t_list	*curr;
+
 	map->grid = malloc(sizeof(char *) * (map->line_count + 1));
 	//add malloc protection
 	map->i = 0;
 	curr = map->line_list;
-	while (curr != NULL) //map->i < map->line_count)
+	while (curr != NULL)
 	{
 		line_array = ft_strdup(curr->content);
 		//add null catching
@@ -121,7 +117,6 @@ int	map_validator(t_map *map)
 			//what about if the first grid malloc fails? what then Ryan?
 			return (0);
 		}
-	//ft_printf("I wanna check the border and make them build the wall");
 	if (!check_borders(map))
 	{
 		free_grid(map, 1);
@@ -138,15 +133,5 @@ int	map_validator(t_map *map)
 		free_grid(map, 1);
 		return (0);
 	}
-	//map->i = 0;
-//	while (map->grid[map->i] != NULL)
-//		ft_printf("The grid array '%s'\n", map->grid[map->i++]);
-//	ft_printf("The grid array '%s'\n", map->grid[map->i]);
-	// check for rectangular shape
-	// Check for exactly 1 exit
-	// Check for at least one collectible
-	// check for exactly one starting position
-	// check for if it is closed on all four sides
-	// check for a valid path
 	return (1);
 }

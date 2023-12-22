@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:46:53 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 09:28:42 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:37:29 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	check_square(t_map *map)
 		map->grid2[map->y][map->x + 1] = 'X';
 	}
 	if (map->grid2[map->y][map->x - 1] == '0'
-		|| map->grid2[map->y][map->x - 1] == 'E') 
+		|| map->grid2[map->y][map->x - 1] == 'E')
 		map->grid2[map->y][map->x - 1] = 'X';
 	if (map->grid2[map->y][map->x - 1] == 'C')
 	{
@@ -158,18 +158,20 @@ int	find_x(t_map *map)
 	}
 	return (0);
 }
+
 int	mark_paths(t_map *map)
 {
-	int i; 
+	int	i;
+
 	i = 0;
 	map->curr_col = map->collectibles;
 	check_square(map);
 	while (!collect_exit(map))
 	{
 		if (!find_x(map))
-		{	
+		{
 			while (map->grid2[i] != NULL)
-			ft_printf("%s\n", map->grid2[i++]);
+				ft_printf("%s\n", map->grid2[i++]);
 			return (0);
 		}
 		check_square(map);
@@ -178,6 +180,7 @@ int	mark_paths(t_map *map)
 		ft_printf("%s\n", map->grid2[i++]);
 	return (1);
 }
+
 int	check_valid_path(t_map *map)
 {
 	map->grid2 = malloc(sizeof(char *) * map->line_count + 1);
