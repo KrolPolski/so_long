@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:17:00 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/21 16:14:40 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:29:08 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	move_player(t_map *map, t_img *img, char c)
 			if(map->grid[map->chary][map->charx] == 'C')
 				collect_chest(map, img, map->mlx);
 			if(map->grid[map->chary][map->charx] == 'e')
-				ft_printf("You win!\n");	
+				{
+			//		mlx_image_to_window(map->mlx, img->img_win, map->tile_sq * 0.5 * map->line_length, map->tile_sq *0.3 * map->line_count);
+					ft_printf("You win!\n");	
+				}
 		}
 		map->moves++;
 		ft_printf("Moves: %d\n", map->moves);
