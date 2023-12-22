@@ -11,7 +11,8 @@ SRCS	:= main.c \
 		   tools.c \
 		   draw_map.c \
 		   hook_mgmt.c \
-		   movement.c
+		   movement.c \
+		   path_validator.c
 
 OBJS	:= ${SRCS:.c=.o} Libft/libft.a
 
