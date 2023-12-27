@@ -6,33 +6,27 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:26:34 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 17:13:16 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:16:18 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	resolve_collectible(t_map *map, int y, int x)
-{
-		map->curr_col--;
-		map->grid2[y][x] = 'X';
-}
-
 void	check_square(t_map *map, int y, int x)
 {
-	if (map->grid2[y + 1][x] == '0'	|| map->grid2[y + 1][x] == 'E')
+	if (map->grid2[y + 1][x] == '0' || map->grid2[y + 1][x] == 'E')
 		map->grid2[y + 1][x] = 'X';
 	if (map->grid[y + 1][x] == 'C')
 		resolve_collectible(map, y + 1, x);
-	if (map->grid2[y - 1][x] == '0'	|| map->grid2[y - 1][x] == 'E')
+	if (map->grid2[y - 1][x] == '0' || map->grid2[y - 1][x] == 'E')
 		map->grid2[y - 1][x] = 'X';
 	if (map->grid[y - 1][x] == 'C')
 		resolve_collectible(map, y - 1, x);
-	if (map->grid2[y][x + 1] == '0'	|| map->grid2[y][x + 1] == 'E')
+	if (map->grid2[y][x + 1] == '0' || map->grid2[y][x + 1] == 'E')
 		map->grid2[y][x + 1] = 'X';
 	if (map->grid[y][x + 1] == 'C')
 		resolve_collectible(map, y, x + 1);
-	if (map->grid2[y][x - 1] == '0'	|| map->grid2[y][x - 1] == 'E')
+	if (map->grid2[y][x - 1] == '0' || map->grid2[y][x - 1] == 'E')
 		map->grid2[y][x - 1] = 'X';
 	if (map->grid2[y][x - 1] == 'C')
 		resolve_collectible(map, y, x - 1);
@@ -89,8 +83,6 @@ int	mark_paths(t_map *map)
 		}
 		check_square(map, map->y, map->x);
 	}
-	//while (map->grid2[i] != NULL)
-	//	ft_printf("%s\n", map->grid2[i++]);
 	return (1);
 }
 
@@ -101,7 +93,6 @@ int	check_valid_path(t_map *map)
 	while (map->grid[map->y] != NULL)
 	{
 		map->grid2[map->y] = ft_strdup(map->grid[map->y]);
-	//	ft_printf("New grid: %s\n", map->grid2[map->y]);
 		map->y++;
 	}
 	map->grid2[map->y] = NULL;
@@ -114,9 +105,6 @@ int	check_valid_path(t_map *map)
 		return (0);
 	}
 	free_grid(map, 2);
-	//ft_printf("We passed valid path test\n");
 	map->y = 0;
-//	while (map->grid[map->y] != NULL)
-//		ft_printf("%s\n", map->grid[map->y++]);
 	return (1);
 }

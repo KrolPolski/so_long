@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 17:08:12 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:14:53 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ int		report_map_count_error(t_map *map);
 int		report_bad_border(void);
 void	collect_chest(t_map *map, t_img *img, mlx_t *mlx);
 void	my_resize_hook(int32_t width, int32_t height, void* param);
+void	resolve_collectible(t_map *map, int y, int x);
 #endif

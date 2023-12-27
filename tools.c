@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:06:56 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:10:43 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:16:39 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,10 @@ void	free_grid(t_map *map, int flag)
 		}
 		free(map->grid2);
 	}
+}
+
+void	resolve_collectible(t_map *map, int y, int x)
+{
+	map->curr_col--;
+	map->grid2[y][x] = 'X';
 }
