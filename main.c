@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:56:29 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:22:36 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, const char **argv)
 	draw_map(mlx, &map, &p);
 	mlx_key_hook(mlx, my_keyhook, &map);
 	mlx_resize_hook(mlx, my_resize_hook, &map);
+	mlx_close_hook(mlx, my_close_hook, &map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	map.i = 0;
