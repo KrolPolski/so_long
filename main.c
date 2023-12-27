@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 10:43:21 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:09:13 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,16 @@ int	main(int argc, const char **argv)
 	if (!map_validator(&map))
 		return (EXIT_FAILURE);
 	mlx = mlx_init(1366, 768, "so_long", true);
+	map.window_width = 1366;
+	map.window_height = 768;
 	map.mlx = mlx;
 	if (!mlx)
 		exit(EXIT_FAILURE);
+	map.charx = map.startx;
+	map.chary = map.starty;
 	draw_map(mlx, &map, &p);
 	mlx_key_hook(mlx, my_keyhook, &map);
+	mlx_resize_hook(mlx, my_resize_hook, &map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	map.i = 0;

@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:17:00 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 11:56:59 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:41:05 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	move_down(t_map *map, t_img *img)
 		if (map->grid[map->chary][map->charx] == 'e')
 		{
 			map->moves++;
-			ft_printf("Moves: %d\n", map->moves);ft_printf("You win!\n");
+			ft_printf("Moves: %d\n", map->moves);
+			ft_printf("You win!\n");
 			free_grid(map, 1);
 			exit(EXIT_SUCCESS);
 		}

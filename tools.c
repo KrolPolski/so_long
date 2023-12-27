@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:06:56 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 12:03:34 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:10:43 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	collect_chest(t_map *map, t_img *img, mlx_t *mlx)
 {
-	//ft_printf("Before collection we have %d \n", map->curr_col);
 	map->curr_col++;
 	ft_printf("You now have %d/%d chests.\n", map->curr_col, map->collectibles);
 	mlx_image_to_window(mlx, img->img_cc,
 		map->charx * map->tile_sq, map->chary * map->tile_sq);
-	map->grid[map->chary][map->charx] = '0';
+	map->grid[map->chary][map->charx] = 'c';
 	if (map->curr_col == map->collectibles)
 	{
 		map->grid[map->exity][map->exitx] = 'e';

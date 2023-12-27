@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 12:00:36 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:08:59 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	determine_tile_size(t_map *map)
 {
-	map->tile_length = 1366 / map->line_length;
-	map->tile_width = 768 / map->line_count;
+	map->tile_length = map->window_width / map->line_length;
+	map->tile_width = map->window_height / map->line_count;
 	if (map->tile_length <= map->tile_width)
 		map->tile_sq = map->tile_length;
 	else
 		map->tile_sq = map->tile_width;
 //	ft_printf("Tile size should be %dx%d, but square is %d\n",
 	//	map->tile_length, map->tile_width, map->tile_sq);
-	map->charx = map->startx;
-	map->chary = map->starty;
+	
 	map->moves = 0;
 	map->curr_col = 0;
 }
@@ -55,9 +54,9 @@ void	initialize_images(mlx_t *mlx, t_map *map, t_img *p)
 	map->x = 0;
 	map->y = 0;
 	determine_tile_size(map);
-	//p->img = mlx_new_image(mlx, 1366, 768);
-	//ft_memset(p->img->pixels, 255, p->img->width * p->img->height * BPP);
-	//mlx_image_to_window(mlx, p->img, 0, 0);
+	p->img = mlx_new_image(mlx, map->window_width, map->window_height);
+	ft_memset(p->img->pixels, 150, p->img->width * p->img->height * BPP);
+	mlx_image_to_window(mlx, p->img, 0, 0);
 	load_textures(mlx, p);
 	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_0, map->tile_sq, map->tile_sq);
@@ -90,6 +89,16 @@ void	draw_row(mlx_t *mlx, t_map *map, t_img *p)
 		else if (map->grid[map->y][map->x] == 'P')
 		{
 			mlx_image_to_window(mlx, p->img_p,
+				map->x * map->tile_sq, map->y * map->tile_sq);
+		}
+		else if (map->grid[map->y][map->x] == 'c')
+		{
+			mlx_image_to_window(mlx, p->img_cc,
+				map->x * map->tile_sq, map->y * map->tile_sq);
+		}
+		else if (map->grid[map->y][map->x] == 'e')
+		{
+			mlx_image_to_window(mlx, p->img_eo,
 				map->x * map->tile_sq, map->y * map->tile_sq);
 		}
 		map->x++;
