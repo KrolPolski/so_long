@@ -16,12 +16,14 @@ It should accept any map that follows the following rules:
 8) There must be walls all along the four edges of the map
 
 An example of a valid map:
-```111111111111111
+```
+111111111111111
 1P000111C000011
 10CC00000001111
 1001100C0000EC1
 10C000111001111
 100010CCC000001
-111111111111111```
+111111111111111
+```
 
 
