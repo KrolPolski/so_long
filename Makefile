@@ -3,7 +3,7 @@ CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
-LIBS    := $(LIBMLX)/build/libmlx42.a -ldl -pthread -lm -L/Users/rboudwin/.brew/Cellar/glfw/3.3.8/lib -lglfw 
+LIBS    := $(LIBMLX)/build/libmlx42.a -ldl -pthread -lm -L/Users/$(USER)/.brew/Cellar/glfw/3.3.8/lib -lglfw 
 		
 SRCS	:= main.c \
 		   map_validator.c \
