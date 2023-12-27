@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:48:35 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:52:16 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,4 @@ void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 	}
 	mlx_image_to_window(mlx, p->img_m,
 		map->charx * map->tile_sq, map->chary * map->tile_sq);
-//	mlx_resize_image(p->img_k, map->tile_sq, map->tile_sq);
-//	mlx_image_to_window(mlx, p->img_k, 150, 150);
-//	mlx_image_to_window(mlx, p->img_k, 800, 500);
-//	ft_printf("%s", map->grid[0]);
 }

@@ -6,47 +6,37 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:26:34 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 11:59:18 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:13:16 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_square(t_map *map)
+void	resolve_collectible(t_map *map, int y, int x)
 {
-	if (map->grid2[map->y + 1][map->x] == '0'
-		|| map->grid2[map->y + 1][map->x] == 'E')
-		map->grid2[map->y + 1][map->x] = 'X';
-	if (map->grid[map->y + 1][map->x] == 'C')
-	{
 		map->curr_col--;
-		map->grid2[map->y + 1][map->x] = 'X';
-	}
-	if (map->grid2[map->y - 1][map->x] == '0'
-		|| map->grid2[map->y - 1][map->x] == 'E')
-		map->grid2[map->y - 1][map->x] = 'X';
-	if (map->grid[map->y - 1][map->x] == 'C')
-	{
-		map->curr_col--;
-		map->grid2[map->y - 1][map->x] = 'X';
-	}
-	if (map->grid2[map->y][map->x + 1] == '0'
-		|| map->grid2[map->y][map->x + 1] == 'E')
-		map->grid2[map->y][map->x + 1] = 'X';
-	if (map->grid[map->y][map->x + 1] == 'C')
-	{
-		map->curr_col--;
-		map->grid2[map->y][map->x + 1] = 'X';
-	}
-	if (map->grid2[map->y][map->x - 1] == '0'
-		|| map->grid2[map->y][map->x - 1] == 'E')
-		map->grid2[map->y][map->x - 1] = 'X';
-	if (map->grid2[map->y][map->x - 1] == 'C')
-	{
-		map->curr_col--;
-		map->grid2[map->y][map->x - 1] = 'X';
-	}
-	map->grid2[map->y][map->x] = '*';
+		map->grid2[y][x] = 'X';
+}
+
+void	check_square(t_map *map, int y, int x)
+{
+	if (map->grid2[y + 1][x] == '0'	|| map->grid2[y + 1][x] == 'E')
+		map->grid2[y + 1][x] = 'X';
+	if (map->grid[y + 1][x] == 'C')
+		resolve_collectible(map, y + 1, x);
+	if (map->grid2[y - 1][x] == '0'	|| map->grid2[y - 1][x] == 'E')
+		map->grid2[y - 1][x] = 'X';
+	if (map->grid[y - 1][x] == 'C')
+		resolve_collectible(map, y - 1, x);
+	if (map->grid2[y][x + 1] == '0'	|| map->grid2[y][x + 1] == 'E')
+		map->grid2[y][x + 1] = 'X';
+	if (map->grid[y][x + 1] == 'C')
+		resolve_collectible(map, y, x + 1);
+	if (map->grid2[y][x - 1] == '0'	|| map->grid2[y][x - 1] == 'E')
+		map->grid2[y][x - 1] = 'X';
+	if (map->grid2[y][x - 1] == 'C')
+		resolve_collectible(map, y, x - 1);
+	map->grid2[y][x] = '*';
 }
 
 int	collect_exit(t_map *map)
@@ -88,7 +78,7 @@ int	mark_paths(t_map *map)
 
 	i = 0;
 	map->curr_col = map->collectibles;
-	check_square(map);
+	check_square(map, map->y, map->x);
 	while (!collect_exit(map))
 	{
 		if (!find_x(map))
@@ -97,7 +87,7 @@ int	mark_paths(t_map *map)
 				ft_printf("%s\n", map->grid2[i++]);
 			return (0);
 		}
-		check_square(map);
+		check_square(map, map->y, map->x);
 	}
 	//while (map->grid2[i] != NULL)
 	//	ft_printf("%s\n", map->grid2[i++]);

@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:00:08 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:08:12 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		check_valid_path(t_map *map);
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p);
 void 	my_keyhook(mlx_key_data_t keydata, void *param);
 void	move_player(t_map *map, t_img *img, char c);
-void	check_square(t_map *map);
+void	check_square(t_map *map, int y, int x);
 int		collect_exit(t_map *map);
 int		find_x(t_map *map);
 int		mark_paths(t_map *map);

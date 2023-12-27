@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:56:38 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:00:51 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:54:35 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		&& keydata.action == MLX_PRESS)
 		move_player(map, map->img, 'R');
 }
-void	my_resize_hook(int32_t width, int32_t height, void* param)
+
+void	my_resize_hook(int32_t width, int32_t height, void *param)
 {
-	t_map *map;
+	t_map	*map;
+
 	map = (t_map *)param;
 	ft_printf("We should resize now to %d by %d\n", width, height);
 	map->window_height = height;
 	map->window_width = width;
 	draw_map(map->mlx, map, map->img);
-	//redraw creature
 }

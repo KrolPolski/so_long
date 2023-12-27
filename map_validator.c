@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:35:48 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 12:10:53 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:01:12 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	read_map(t_map *map)
 	}
 	map->line_count = ft_lstsize(map->line_list);
 	map->line_length = ft_strlen(map->line_list->content);
-// add error check for malloc failures and whatnot
 	return (1);
 }
 
@@ -85,13 +84,15 @@ int	convert_to_array(t_map *map)
 	t_list	*curr;
 
 	map->grid = malloc(sizeof(char *) * (map->line_count + 1));
-	//add malloc protection
+	if (!map->grid)
+		return (0);
 	map->i = 0;
 	curr = map->line_list;
 	while (curr != NULL)
 	{
 		line_array = ft_strdup(curr->content);
-		//add null catching
+		if (!line_array)
+			return (0);
 		map->grid[map->i] = line_array;
 		map->i++;
 		curr = curr->next;
@@ -116,9 +117,10 @@ int	map_validator(t_map *map)
 	if (!convert_to_array(map) || !check_borders(map)
 		|| !count_exits_etc(map) || !check_valid_path(map))
 	{
-		//what about if the first grid malloc fails? what then Ryan?
 		free_grid(map, 1);
 		return (0);
 	}
+	map->charx = map->startx;
+	map->chary = map->starty;
 	return (1);
 }
