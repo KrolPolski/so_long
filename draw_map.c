@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 11:38:53 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:00:36 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	determine_tile_size(t_map *map)
 		map->tile_sq = map->tile_length;
 	else
 		map->tile_sq = map->tile_width;
-	ft_printf("Tile size should be %dx%d, but square is %d\n",
-		map->tile_length, map->tile_width, map->tile_sq);
+//	ft_printf("Tile size should be %dx%d, but square is %d\n",
+	//	map->tile_length, map->tile_width, map->tile_sq);
 	map->charx = map->startx;
 	map->chary = map->starty;
 	map->moves = 0;
@@ -39,7 +39,6 @@ void	load_textures(mlx_t *mlx, t_img *p)
 	p->txt_m = mlx_load_png("./assets/minotaur.png");
 	p->txt_cc = mlx_load_png("./assets/props_itens/chest_open.png");
 	p->txt_eo = mlx_load_png("./assets/tiles/wall/door_fullyopen.png");
-//	p->txt_win = mlx_load_png("./assets/Youwin.png");
 	p->img_k = mlx_texture_to_image(mlx, p->txt_k);
 	p->img_0 = mlx_texture_to_image(mlx, p->txt_0);
 	p->img_1 = mlx_texture_to_image(mlx, p->txt_1);
@@ -49,7 +48,6 @@ void	load_textures(mlx_t *mlx, t_img *p)
 	p->img_m = mlx_texture_to_image(mlx, p->txt_m);
 	p->img_cc = mlx_texture_to_image(mlx, p->txt_cc);
 	p->img_eo = mlx_texture_to_image(mlx, p->txt_eo);
-	//p->img_win = mlx_texture_to_image(mlx, p->txt_win);
 }
 
 void	initialize_images(mlx_t *mlx, t_map *map, t_img *p)

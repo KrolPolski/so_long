@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:06:56 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 12:17:41 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:03:34 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	collect_chest(t_map *map, t_img *img, mlx_t *mlx)
 {
-	ft_printf("Before collection we have %d \n", map->curr_col);
+	//ft_printf("Before collection we have %d \n", map->curr_col);
 	map->curr_col++;
-	ft_printf("You now have %d/%d chests\n", map->curr_col, map->collectibles);
+	ft_printf("You now have %d/%d chests.\n", map->curr_col, map->collectibles);
 	mlx_image_to_window(mlx, img->img_cc,
 		map->charx * map->tile_sq, map->chary * map->tile_sq);
 	map->grid[map->chary][map->charx] = '0';
@@ -33,6 +33,7 @@ void	collect_chest(t_map *map, t_img *img, mlx_t *mlx)
 	mlx_image_to_window(mlx, img->img_m,
 		map->charx * map->tile_sq, map->chary * map->tile_sq);
 }
+
 int	report_bad_border(void)
 {
 	ft_printf("ERROR: The map does not have obstacles across all edges\n");
@@ -42,7 +43,7 @@ int	report_bad_border(void)
 int	report_map_count_error(t_map *map)
 {
 	ft_printf("ERROR: Invalid map- starts: %d exits: %d collectibles: %d\n",
-	map->starts, map->exits, map->collectibles);
+		map->starts, map->exits, map->collectibles);
 	ft_printf("You must have exactly one start, one exit");
 	ft_printf(" and at least one collectible\n");
 	return (0);

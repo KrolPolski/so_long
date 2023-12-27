@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:26:34 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/22 10:32:24 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 11:59:18 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	find_x(t_map *map)
 		}
 		if (map->grid2[map->y][map->x] == 'X')
 		{
-			ft_printf("current X is at y:%d and x:%d\n", map->y, map->x);
 			return (1);
 		}
 		else
@@ -100,8 +99,8 @@ int	mark_paths(t_map *map)
 		}
 		check_square(map);
 	}
-	while (map->grid2[i] != NULL)
-		ft_printf("%s\n", map->grid2[i++]);
+	//while (map->grid2[i] != NULL)
+	//	ft_printf("%s\n", map->grid2[i++]);
 	return (1);
 }
 
@@ -112,7 +111,7 @@ int	check_valid_path(t_map *map)
 	while (map->grid[map->y] != NULL)
 	{
 		map->grid2[map->y] = ft_strdup(map->grid[map->y]);
-		ft_printf("New grid: %s\n", map->grid2[map->y]);
+	//	ft_printf("New grid: %s\n", map->grid2[map->y]);
 		map->y++;
 	}
 	map->grid2[map->y] = NULL;
@@ -125,9 +124,9 @@ int	check_valid_path(t_map *map)
 		return (0);
 	}
 	free_grid(map, 2);
-	ft_printf("We passed valid path test\n");
+	//ft_printf("We passed valid path test\n");
 	map->y = 0;
-	while (map->grid[map->y] != NULL)
-		ft_printf("%s\n", map->grid[map->y++]);
+//	while (map->grid[map->y] != NULL)
+//		ft_printf("%s\n", map->grid[map->y++]);
 	return (1);
 }
