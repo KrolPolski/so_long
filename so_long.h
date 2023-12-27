@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 17:14:53 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:17:39 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		count_exits_etc(t_map *map);
 void	free_grid(t_map *map, int flag);
 int		check_valid_path(t_map *map);
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p);
-void 	my_keyhook(mlx_key_data_t keydata, void *param);
+void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	move_player(t_map *map, t_img *img, char c);
 void	check_square(t_map *map, int y, int x);
 int		collect_exit(t_map *map);
@@ -95,6 +95,6 @@ int		check_valid_path(t_map *map);
 int		report_map_count_error(t_map *map);
 int		report_bad_border(void);
 void	collect_chest(t_map *map, t_img *img, mlx_t *mlx);
-void	my_resize_hook(int32_t width, int32_t height, void* param);
+void	my_resize_hook(int32_t width, int32_t height, void *param);
 void	resolve_collectible(t_map *map, int y, int x);
 #endif
