@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:08:59 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:48:35 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ void	determine_tile_size(t_map *map)
 		map->tile_sq = map->tile_length;
 	else
 		map->tile_sq = map->tile_width;
-//	ft_printf("Tile size should be %dx%d, but square is %d\n",
-	//	map->tile_length, map->tile_width, map->tile_sq);
-	
 	map->moves = 0;
 	map->curr_col = 0;
 }
@@ -67,7 +64,6 @@ void	initialize_images(mlx_t *mlx, t_map *map, t_img *p)
 	mlx_resize_image(p->img_p, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_m, map->tile_sq, map->tile_sq);
 	mlx_resize_image(p->img_eo, map->tile_sq, map->tile_sq);
-	//mlx_resize_image(p->img_win, map->tile_sq * 5, map->tile_sq * 2);
 }
 
 void	draw_row(mlx_t *mlx, t_map *map, t_img *p)
@@ -87,20 +83,14 @@ void	draw_row(mlx_t *mlx, t_map *map, t_img *p)
 			mlx_image_to_window(mlx, p->img_e,
 				map->x * map->tile_sq, map->y * map->tile_sq);
 		else if (map->grid[map->y][map->x] == 'P')
-		{
 			mlx_image_to_window(mlx, p->img_p,
 				map->x * map->tile_sq, map->y * map->tile_sq);
-		}
 		else if (map->grid[map->y][map->x] == 'c')
-		{
 			mlx_image_to_window(mlx, p->img_cc,
 				map->x * map->tile_sq, map->y * map->tile_sq);
-		}
 		else if (map->grid[map->y][map->x] == 'e')
-		{
 			mlx_image_to_window(mlx, p->img_eo,
 				map->x * map->tile_sq, map->y * map->tile_sq);
-		}
 		map->x++;
 	}
 }
