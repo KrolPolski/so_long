@@ -2,6 +2,9 @@
 
 This is a very simple game where the player moves through a map, defined by an text file, to collect all the chests and then move to the exit in the fewest number of moves.
 
+Dependencies:
+https://github.com/codam-coding-college/MLX42 - this should be automatically installed using the Makefile.
+
 It should accept any map that follows the following rules:
 1) The map must end with a .ber extension
 2) The map must be rectangular (all the lines must be the same length)
@@ -13,7 +16,7 @@ It should accept any map that follows the following rules:
 8) There must be walls all along the four edges of the map
 
 An example of a valid map:
-111111111111111
+```111111111111111
 1P000111C000011
 10CC00000001111
 1001100C0000EC1
@@ -21,5 +24,4 @@ An example of a valid map:
 100010CCC000001
 111111111111111
 
-Dependencies:
-https://github.com/codam-coding-college/MLX42
+
