@@ -1,9 +1,10 @@
 ![Screenshot 2023-12-27 at 21 11 17](https://github.com/KrolPolski/so_long/assets/47835762/633b2c74-c9c0-4e39-a5c0-14eb8e2c0246)
+<img width="1208" alt="Screen Shot 2023-12-28 at 12 53 45 PM" src="https://github.com/KrolPolski/so_long/assets/47835762/fbfe0857-0c99-44f3-b046-05f348d9ba6a">
 
-This is a very simple game where the player moves through a map, defined by an text file, to collect all the chests and then move to the exit in the fewest number of moves.
+This is a very simple game written in C where the player moves through a map, defined by an text file, to collect all the chests and then move to the exit in the fewest number of moves.
 
 Dependencies:
-https://github.com/codam-coding-college/MLX42 - this should be automatically installed using the Makefile.
+https://github.com/codam-coding-college/MLX42 - this should be automatically installed using the Makefile. The readme for this library has details on what dependencies you need depending on the operating system you are running.
 
 It should accept any map that follows the following rules:
 1) The map must end with a .ber extension
