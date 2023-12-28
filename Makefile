@@ -28,13 +28,13 @@ $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 Libft/libft.a: 
-	$(MAKE) -C libft/ all
-	$(MAKE) -C libft/ bonus
+	$(MAKE) -C Libft/ all
+	$(MAKE) -C Libft/ bonus
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
-	rm -f libft/.bonus;
+	rm -f Libft/.bonus;
 
 fclean: clean
 	@rm -rf $(NAME)
