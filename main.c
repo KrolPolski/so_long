@@ -6,12 +6,12 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 17:22:36 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/28 13:23:30 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-//TODO: libft doesn't always make the right way, left out bonuses. check on this
+
 void	check_args(int argc, const char **argv, t_map *map)
 {
 	if (argc <= 1)
