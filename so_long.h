@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:45 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 17:23:49 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:48:38 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,7 @@ void	collect_chest(t_map *map, t_img *img, mlx_t *mlx);
 void	my_resize_hook(int32_t width, int32_t height, void *param);
 void	resolve_collectible(t_map *map, int y, int x);
 void	my_close_hook(void *param);
+void	initialize_images(mlx_t *mlx, t_map *map, t_img *p);
+void	determine_tile_size(t_map *map);
+void	load_textures(mlx_t *mlx, t_img *p);
 #endif

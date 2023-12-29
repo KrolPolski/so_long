@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:50:19 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/28 13:23:30 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:47:33 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, const char **argv)
 	map.mlx = mlx;
 	if (!mlx)
 		exit(EXIT_FAILURE);
+	initialize_images(mlx, &map, &p);
 	draw_map(mlx, &map, &p);
 	mlx_key_hook(mlx, my_keyhook, &map);
 	mlx_resize_hook(mlx, my_resize_hook, &map);

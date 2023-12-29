@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:26:11 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 16:52:16 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:40:55 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	draw_row(mlx_t *mlx, t_map *map, t_img *p)
 
 void	draw_map(mlx_t *mlx, t_map *map, t_img *p)
 {
-	initialize_images(mlx, map, p);
 	while (map->grid[map->y] != NULL)
 	{
 		draw_row(mlx, map, p);
