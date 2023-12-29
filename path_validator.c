@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:26:34 by rboudwin          #+#    #+#             */
-/*   Updated: 2023/12/27 18:30:20 by rboudwin         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:39:14 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ int	mark_paths(t_map *map)
 int	check_valid_path(t_map *map)
 {
 	map->grid2 = malloc(sizeof(char *) * map->line_count + 1);
+	if (!map->grid2)
+	{
+		ft_printf("Memory allocation failure\n");
+		return (0);
+	}
 	map->y = 0;
 	while (map->grid[map->y] != NULL)
 	{
